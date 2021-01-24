@@ -36,6 +36,9 @@ public class udpServer {
             for(int i = 1; i < strList.size(); i++){
                 res = res + "_" + strList.get(i);
             }
+            // contentname1:multipelcastIP1:port1_contentname2:multipelcastIP2:port2
+            // eg: pku/eecs/msg/hangzhen/aero1:225.0.0.1:51010_pku/eecs/msg/metro/place1:225.0.0.2:51011
+
             System.out.println(res);
             DatagramPacket sendpacket = new DatagramPacket(res.getBytes(), res.getBytes().length, new InetSocketAddress(ip, port));
             server.send(sendpacket);

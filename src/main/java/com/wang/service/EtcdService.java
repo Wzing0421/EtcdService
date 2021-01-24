@@ -29,7 +29,8 @@ public class EtcdService {
         List<KeyValue> kvs = EtcdUtil.getEtcdKeyValueByKeyPrefix(PREFIX);
         List<String> retStrList = new ArrayList<>();
         for(KeyValue kv : kvs){
-            retStrList.add(kv.getValue().toString(UTF_8));
+            String key = kv.getKey().toString(UTF_8).substring(4); // del "Mul_" prefix
+            retStrList.add(key + ":" + kv.getValue().toString(UTF_8));
         }
         return retStrList;
     }
