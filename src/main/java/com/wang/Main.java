@@ -11,6 +11,7 @@ public class Main {
 
         System.out.println("Udp server starts!");
 
+
         udpServer server = (udpServer) ctx.getBean("udpServer");
         server.run();
     }

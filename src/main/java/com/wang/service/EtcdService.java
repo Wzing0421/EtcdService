@@ -30,7 +30,9 @@ public class EtcdService {
         List<String> retStrList = new ArrayList<>();
         for(KeyValue kv : kvs){
             String key = kv.getKey().toString(UTF_8).substring(4); // del "Mul_" prefix
-            key = key.substring(0, key.length() - 6); // del "_beam1" suffix
+            if(!key.contains("file")){
+                key = key.substring(0, key.length() - 6); // del "_beam1" suffix
+            }
             retStrList.add(key + ":" + kv.getValue().toString(UTF_8));
         }
         return retStrList;
